@@ -6,10 +6,12 @@ To install the chart with the release name `crowi`:
 
 ```bash
 $ git clone git@github.com:lightnet328/helm-crowi.git
-$ helm inspect values charts > crowi.yaml
+$ cd helm-crowi
+$ helm dep build
+$ helm inspect values . > crowi.yaml
 # Edit the values files
 $ vim crowi.yaml
-$ helm install --name crowi --values crowi.yaml charts
+$ helm install --name crowi --values crowi.yaml .
 ```
 
 ## Uninstalling the Chart
