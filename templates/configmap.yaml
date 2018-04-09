@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "crowi.fullname" . }}
+  labels:
+    app: {{ template "crowi.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+data:
+  {{- with .Values }}
+  NODE_EMV: {{ .configData.nodeEnv }}
+  MONGO_URI: {{ .configData.mongoUri }}
+  REDIS_URL: {{ .configData.redisUrl }}
+  ELASTICSEARCH_URI: {{ .configData.elasticsearchUri }}
+  PASSWORD_SEED: {{ .configData.passwordSeed }}
+  SECRET_TOKEN: {{ .configData.secretToken }}
+  FILE_UPLOAD: {{ .configData.fileUpload }}
+  {{ end }}

@@ -1,0 +1,27 @@
+{{- if .Values.elasticsearch.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: {{ template "elasticsearch.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: {{ template "elasticsearch.fullname" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ template "elasticsearch.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ default "default" .Values.elasticsearch.serviceAccountName }}
+  namespace: {{ .Release.Namespace }}
+{{- end }}

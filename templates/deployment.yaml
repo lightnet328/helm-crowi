@@ -23,9 +23,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+          - configMapRef:
+              name: {{ template "crowi.fullname" . }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ default "3000" .Values.service.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -36,16 +39,30 @@ spec:
               path: /
               port: http
           resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
+            {{ toYaml .Values.resources | indent 10 }}
+          {{- $useVolume := and .Values.persistence.enabled (eq .Values.configData.fileUpload "local") -}}
+          {{- if $useVolume -}}
+          volumeMounts:
+          - name: data
+            mountPath: /crowi/public/uploads
+          {{- end }}
+      {{ if $useVolume -}}
+      {{- with .Values.persistence }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ if .existingClaim }}{{ .existingClaim }}{{ else }}{{ template "crowi.fullname" $ }}{{ end }}
+      {{- end -}}
+      {{- end -}}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
       affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
       tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+        {{ toYaml . | indent 8 }}
+      {{- end }}

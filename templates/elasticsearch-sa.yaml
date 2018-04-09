@@ -1,0 +1,11 @@
+{{- if .Values.elasticsearch.serviceAccount.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ default "default" .Values.elasticsearch.serviceAccountName }}
+  labels:
+    app: {{ template "crowi.name" . }}
+    chart: {{ template "crowi.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- end }}
