@@ -1,17 +1,17 @@
-# Default values for crowi.
+# Default values for helm-crowi.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
+  repository: bakudankun/crowi
+  tag: 1.5.3
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 80
+  port: 3000
 
 ingress:
   enabled: false
@@ -25,6 +25,20 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+persistence:
+  enabled: false
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+configData:
+  nodeEnv: production
+  mongoUri:
+  redisUrl:
+  elasticsearchUri:
+  passwordSeed: aa4421d7f8730a0c3bd65960a9d51bc6
+  secretToken: aa4421d7f8730a0c3bd65960a9d51bc6
+  fileUpload: aws
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -43,3 +57,31 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+plantuml:
+  image:
+    repository: plantuml/plantuml-server
+    tag: latest
+    pullPolicy: IfNotPresent
+
+mongodb:
+  enabled: true
+
+redis:
+  enabled: true
+
+elasticsearch:
+  enabled: true
+
+  serviceAccountName: elasticsearch
+
+  serviceAccount:
+    create: true
+
+  rbac:
+    create: true
+
+  plugins: io.fabric8:elasticsearch-cloud-kubernetes:5.5.2, analysis-kuromoji
+
+  data:
+    replicas: 6
