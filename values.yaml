@@ -29,7 +29,7 @@ ingress:
 persistence:
   enabled: false
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 8Gi
 
 configData:
   nodeEnv: production

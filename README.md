@@ -39,7 +39,7 @@ The following table lists the configurable parameters of the Crowi chart and the
 | `persistence.enabled`                 | Use a PVC to persist data                           | `false`                                                              |
 | `persistence.accessMode`              | Use volume as ReadOnly or ReadWrite                 | `ReadWriteOnce`                                                      |
 | `persistence.storageClass`            | Storage class of backing PVC                        | `nil`                                                                |
-| `persistence.size`                    | Size of data volume                                 | `10Gi`                                                               |
+| `persistence.size`                    | Size of data volume                                 | `8Gi`                                                               |
 | `mongodb.enabled`                     | Enable mongodb                                      | `true`                                                               |
 | `redis.enabled`                       | Enable redis                                        | `true`                                                               |
 | `elasticsearch.enabled`               | Enable elasticsearch                                | `true`                                                               |
