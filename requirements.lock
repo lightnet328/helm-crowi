@@ -1,0 +1,12 @@
+dependencies:
+- name: mongodb
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 0.4.9
+- name: redis
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 1.1.19
+- name: elasticsearch
+  repository: https://charts.bitnami.com/incubator
+  version: 0.1.2
+digest: sha256:4382b9f24b8b477fb852a21888e974aa600683062673b761d02c93065ad9ad10
+generated: 2018-03-12T19:04:48.880068+09:00
