@@ -16,4 +16,5 @@ data:
   PASSWORD_SEED: {{ .configData.passwordSeed }}
   SECRET_TOKEN: {{ .configData.secretToken }}
   FILE_UPLOAD: {{ .configData.fileUpload }}
+  MATHJAX: {{ .configData.mathjax }}
   {{ end }}

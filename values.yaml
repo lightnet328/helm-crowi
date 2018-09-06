@@ -39,6 +39,7 @@ configData:
   passwordSeed: aa4421d7f8730a0c3bd65960a9d51bc6
   secretToken: aa4421d7f8730a0c3bd65960a9d51bc6
   fileUpload: aws
+  mathjax:
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
