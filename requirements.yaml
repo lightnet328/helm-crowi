@@ -8,6 +8,6 @@ dependencies:
     repository: https://kubernetes-charts.storage.googleapis.com
     condition: redis.enabled
   - name: elasticsearch
-    version: 0.1.2
-    repository: https://charts.bitnami.com/incubator
+    version: 2.0.2
+    repository: https://charts.bitnami.com/bitnami
     condition: elasticsearch.enabled

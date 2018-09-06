@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
-  name: {{ template "elasticsearch.fullname" . }}
+  name: {{ template "crowi.elasticsearch.fullname" . }}
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups:
@@ -15,11 +15,11 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
-  name: {{ template "elasticsearch.fullname" . }}
+  name: {{ template "crowi.elasticsearch.fullname" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ template "elasticsearch.fullname" . }}
+  name: {{ template "crowi.elasticsearch.fullname" . }}
 subjects:
 - kind: ServiceAccount
   name: {{ default "default" .Values.elasticsearch.serviceAccountName }}

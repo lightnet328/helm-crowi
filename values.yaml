@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: bakudankun/crowi
-  tag: 1.5.3
+  repository: crowi/crowi
+  tag: 1.7.0
   pullPolicy: IfNotPresent
 
 service:
@@ -81,7 +81,7 @@ elasticsearch:
   rbac:
     create: true
 
-  plugins: io.fabric8:elasticsearch-cloud-kubernetes:5.5.2, analysis-kuromoji
+  plugins: analysis-kuromoji
 
   data:
-    replicas: 6
+    replicas: 3

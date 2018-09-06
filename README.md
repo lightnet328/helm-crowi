@@ -31,8 +31,8 @@ The following table lists the configurable parameters of the Crowi chart and the
 | Parameter                             | Description                                         | Default                                                              |
 | ------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
 | `image.registry`                      | Crowi image registry                                | `docker.io`                                                          |
-| `image.repository`                    | Crowi Image name                                    | `bakudankun/crowi`                                                   |
-| `image.tag`                           | Crowi Image tag                                     | `1.5.3`                                                              |
+| `image.repository`                    | Crowi Image name                                    | `crowi/crowi`                                                   |
+| `image.tag`                           | Crowi Image tag                                     | `1.7.0`                                                              |
 | `image.pullPolicy`                    | Image pull policy                                   | `IfNotPresent`                                                       |
 | `service.type`                        | Kubernetes Service type                             | `ClusterIP`                                                          |
 | `service.port`                        | Kubernetes Service port                             | `3000`                                                               |
@@ -46,5 +46,5 @@ The following table lists the configurable parameters of the Crowi chart and the
 | `elasticsearch.serviceAccountName`    | Kubernetes service account                          | `elasticsearch`                                                      |
 | `elasticsearch.serviceAccount.create` | Create service account                              | `true`                                                               |
 | `elasticsearch.rbac.create`           | If true, create & use RBAC resources                | `true`                                                               |
-| `elasticsearch.plugins`               | Elasticsearch node plugins                          | `io.fabric8:elasticsearch-cloud-kubernetes:5.5.2, analysis-kuromoji` |
-| `elasticsearch.data.replicas`         | Desired number of Elasticsearch data eligible nodes | `6`                                                                  |
+| `elasticsearch.plugins`               | Elasticsearch node plugins                          | `analysis-kuromoji` |
+| `elasticsearch.data.replicas`         | Desired number of Elasticsearch data eligible nodes | `3`                                                                  |

@@ -7,9 +7,8 @@ keywords:
 home: http://site.crowi.wiki/
 sources:
   - https://github.com/crowi/crowi
-  - https://github.com/crowi/docker-crowi
 maintainers:
   - name: lightnet328
     email: lightnet328@gmail.com
 engine: gotpl
-appVersion: v1.5.3
+appVersion: v1.7.0

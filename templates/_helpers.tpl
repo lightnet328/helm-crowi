@@ -24,7 +24,7 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
-{{- define "elasticsearch.fullname" -}}
+{{- define "crowi.elasticsearch.fullname" -}}
 {{- $name := default .Chart.Name .Values.nameOverride -}}
 {{- printf "%s-%s-%s" .Release.Name $name "elasticsearch" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
